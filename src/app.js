@@ -1,5 +1,5 @@
 async function fetchRepos() {
-  const response = await fetch("https://api.github.com/users/SEU_USUARIO/repos");
+  const response = await fetch("https://api.github.com/users/tsichero/repos");
   const repos = await response.json();
 
   const container = document.getElementById("repos");
@@ -10,6 +10,7 @@ async function fetchRepos() {
     div.innerHTML = `
       <h3>${repo.name}</h3>
       <p>${repo.description || "Sem descrição"}</p>
+      <p><strong>Linguagem:</strong> ${repo.language || "N/A"}</p>
       <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
       <hr/>
     `;
@@ -19,10 +20,3 @@ async function fetchRepos() {
 }
 
 fetchRepos();
-div.innerHTML = `
-  <h3>${repo.name}</h3>
-  <p>${repo.description || "Sem descrição"}</p>
-  <p><strong>Linguagem:</strong> ${repo.language || "N/A"}</p>
-  <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
-  <hr/>
-`;
