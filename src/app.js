@@ -19,3 +19,10 @@ async function fetchRepos() {
 }
 
 fetchRepos();
+div.innerHTML = `
+  <h3>${repo.name}</h3>
+  <p>${repo.description || "Sem descrição"}</p>
+  <p><strong>Linguagem:</strong> ${repo.language || "N/A"}</p>
+  <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+  <hr/>
+`;
