@@ -10,12 +10,23 @@ async function fetchRepos() {
       return (repo.stargazers_count * 2) + repo.forks_count;
     }
 
-    repos.forEach(repo => {
+    // 🔥 Ordena por score (maior → menor)
+    repos.sort((a, b) => getScore(b) - getScore(a));
+
+    repos.forEach((repo, index) => {
       const div = document.createElement("div");
-      div.classList.add("card");
+
+      // 🏆 destaque TOP 3
+      if (index < 3) {
+        div.classList.add("card", "top");
+      } else {
+        div.classList.add("card");
+      }
 
       div.innerHTML = `
-        <h3>${repo.name}</h3>
+        <h3>
+          ${index < 3 ? "🏆 " : ""}${repo.name}
+        </h3>
 
         <p class="desc">
           ${repo.description || "Sem descrição disponível"}
