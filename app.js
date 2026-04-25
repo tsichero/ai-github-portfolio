@@ -6,6 +6,11 @@ async function fetchRepos() {
     const container = document.getElementById("repos");
     container.innerHTML = "";
 
+    // 🔥 Função de Score (Data Science)
+    function getScore(repo) {
+      return (repo.stargazers_count * 2) + repo.forks_count;
+    }
+
     repos.forEach(repo => {
       const div = document.createElement("div");
 
@@ -13,6 +18,7 @@ async function fetchRepos() {
         <h3>${repo.name}</h3>
         <p>${repo.description || "Sem descrição"}</p>
         <p><strong>Linguagem:</strong> ${repo.language || "N/A"}</p>
+        <p><strong>Score:</strong> ${getScore(repo)}</p>
         <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
         <hr/>
       `;
@@ -22,6 +28,7 @@ async function fetchRepos() {
 
   } catch (error) {
     document.getElementById("repos").innerHTML = "Erro ao carregar os repositórios 😢";
+    console.error(error);
   }
 }
 
