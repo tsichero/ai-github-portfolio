@@ -1,4 +1,4 @@
-# 🧠 Tatá — AI Systems Builder
+# 🧠 Tainã Sichero Dulcetti — AI Systems Builder
 
 > I design and build AI systems that transform data into decisions, automation into leverage, and ideas into scalable products.
 
